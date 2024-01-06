@@ -30,7 +30,7 @@ dependencies {
 
     // test
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation(platform("org.junit:junit-bom:5.10.1"))
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
 }
 
