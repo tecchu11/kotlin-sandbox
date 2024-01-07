@@ -23,5 +23,7 @@ tasks.withType<KotlinJvmCompile> {
 
 dependencies {
     implementation(platform(libs.of("kotlin-coroutine-bom")))
+    implementation(platform(libs.of("grpc-bom")))
+    implementation(platform(libs.of("proto-bom")))
     testImplementation(platform(libs.of("junit-bom")))
 }

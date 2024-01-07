@@ -4,6 +4,9 @@ plugins {
 }
 
 dependencies {
+    //gRPC
+    implementation(libs.bundles.grpc.kotlin)
+    testImplementation(libs.grpc.testing)
     // logging
     implementation(libs.bundles.logging)
     // coroutines
