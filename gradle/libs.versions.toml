@@ -1,0 +1,28 @@
+[versions]
+retrofit = "2.9.0"
+
+
+[libraries]
+kotlin-jvm = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version = "1.9.22" }
+kotlin-coroutine-bom = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-bom", version = "1.7.3" }
+kotlin-coroutinee-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core" }
+kotlin-coroutine-slf4j = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-slf4j" }
+
+logging-logback = { module = "ch.qos.logback:logback-classic", version = "1.4.14" }
+logging-kotlin = { module = "io.github.microutils:kotlin-logging-jvm", version = "3.0.5" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit" }
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version = "2.14.2" }
+
+junit-bom = { module = "org.junit:junit-bom", version = "5.10.1" }
+junit-kotlin = { module = "org.jetbrains.kotlin:kotlin-test-junit5" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-engine" }
+
+detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version = "1.23.4" }
+
+[bundles]
+plugins = ["kotlin-jvm", "detekt"]
+kotlin-coroutine = ["kotlin-coroutinee-core", "kotlin-coroutine-slf4j"]
+logging = ["logging-logback", "logging-kotlin"]
+retrofit = ["retrofit", "retrofit-jackson", "jackson-kotlin"]
+test = ["junit-kotlin", "junit-jupiter"]
