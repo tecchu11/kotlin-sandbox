@@ -1,5 +1,6 @@
 plugins {
     id("project.kotlin-convention")
+    id("project.protobuf-convention")
     application
 }
 

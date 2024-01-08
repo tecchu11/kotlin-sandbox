@@ -1,44 +1,44 @@
 package com.example
 
-import com.fasterxml.jackson.module.kotlin.jacksonMapperBuilder
-import kotlinx.coroutines.runBlocking
+import com.examples.helloworld.GreeterGrpcKt
+import com.examples.helloworld.HelloReply
+import com.examples.helloworld.HelloRequest
+import com.examples.helloworld.helloReply
+import io.grpc.ServerBuilder
+import io.grpc.protobuf.services.ProtoReflectionService
+import kotlinx.coroutines.delay
 import mu.KotlinLogging
-import okhttp3.OkHttpClient
-import retrofit2.HttpException
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
-import java.net.SocketTimeoutException
+import java.util.concurrent.TimeUnit
 
 val logger = KotlinLogging.logger {}
+private const val TERMINATION_PERIOD = 10L
 
 fun main() {
-    val httpbinClient = Retrofit.Builder()
-        .baseUrl("https://httpbin.org/")
-        .client(
-            OkHttpClient.Builder()
-                .addInterceptor(EmptyResponseInterceptor())
-                .build()
-        )
-        .addConverterFactory(
-            JacksonConverterFactory.create(
-                jacksonMapperBuilder().build()
-            )
-        )
+    val svr = ServerBuilder
+        .forPort(9000)
+        .addService(Greeter())
+        .addService(ProtoReflectionService.newInstance())
         .build()
-        .create(HttpbinClient::class.java)
-
-    runBlocking {
-        kotlin.runCatching {
-            httpbinClient.statusCodeWith(503)
-        }.onFailure {
-            when (it.javaClass) {
-                HttpException::class.java -> logger.error(it) { "STATUS ERROR" }
-                SocketTimeoutException::class.java -> logger.error(it) { "TIMEOUT" }
-                else -> logger.error { "UNHANDLED ERROR" }
+    svr.start().also {
+        logger.info { "server started with ${it.port}" }
+        Runtime.getRuntime().addShutdownHook(
+            Thread {
+                logger.info { "*** shutting down gRPC server since JVM is shutting down ***" }
+                it.shutdown().awaitTermination(TERMINATION_PERIOD, TimeUnit.SECONDS)
+                logger.info { "*** server shut down ***" }
+            }.apply {
+                this.name = "shutdown-hook"
             }
-        }.onSuccess {
-            logger.info { "success to call" }
+        )
+    }
+    svr.awaitTermination(TERMINATION_PERIOD, TimeUnit.SECONDS)
+}
+
+class Greeter : GreeterGrpcKt.GreeterCoroutineImplBase() {
+    override suspend fun sayHello(request: HelloRequest): HelloReply {
+        return helloReply {
+            delay(10000)
+            this.message = "Hello World!!"
         }
     }
-    logger.info { "finish" }
 }

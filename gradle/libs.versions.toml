@@ -1,5 +1,8 @@
 [versions]
 retrofit = "2.9.0"
+grpc = "1.60.0"
+grpc-kotlin = "1.4.1"
+protobuf = "3.25.1"
 
 [libraries]
 kotlin-jvm = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version = "1.9.22" }
@@ -7,15 +10,18 @@ kotlin-coroutine-bom = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-bom"
 kotlin-coroutinee-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core" }
 kotlin-coroutine-slf4j = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-slf4j" }
 
-grpc-bom = { module = "io.grpc:grpc-bom", version = "1.60.0" }
-grpc-kotin-stub = { module = "io.grpc:grpc-kotlin-stub", version = "1.4.1" }
-grpc-proto = { module = "io.grpc:grpc-protobuf" }
+grpc-bom = { module = "io.grpc:grpc-bom", version.ref = "grpc" }
+grpc-proto-gen-java = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf" }
 grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded" }
 grpc-services = { module = "io.grpc:grpc-services" }
 grpc-testing = { module = "io.grpc:grpc-testing" }
-proto-gradle-plugin = { module = "com.google.protobuf:protobuf-gradle-plugin", version = "0.9.4" }
-proto-bom = { module = "com.google.protobuf:protobuf-bom", version = "3.25.1" }
-proto-kotlin = { module = "com.google.protobuf:protobuf-kotlin" }
+grpc-kotin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin" }
+grpc-proto-gen-kotlin = { module = "io.grpc:protoc-gen-grpc-kotlin", version.ref = "grpc-kotlin" }
+protobuf-gradle-plugin = { module = "com.google.protobuf:protobuf-gradle-plugin", version = "0.9.4" }
+protobuf-bom = { module = "com.google.protobuf:protobuf-bom", version.ref = "protobuf" }
+protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
+protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin" }
 
 logging-logback = { module = "ch.qos.logback:logback-classic", version = "1.4.14" }
 logging-kotlin = { module = "io.github.microutils:kotlin-logging-jvm", version = "3.0.5" }
@@ -30,8 +36,8 @@ junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-engine" }
 detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version = "1.23.4" }
 
 [bundles]
-plugins = ["kotlin-jvm", "detekt", "proto-gradle-plugin"]
-grpc-kotlin = ["grpc-kotin-stub", "grpc-netty-shaded", "grpc-proto", "grpc-services", "proto-kotlin"]
+plugins = ["kotlin-jvm", "detekt", "protobuf-gradle-plugin"]
+grpc-kotlin = ["grpc-kotin-stub", "grpc-netty-shaded", "grpc-protobuf", "grpc-services", "protobuf-kotlin"]
 kotlin-coroutine = ["kotlin-coroutinee-core", "kotlin-coroutine-slf4j"]
 logging = ["logging-logback", "logging-kotlin"]
 retrofit = ["retrofit", "retrofit-jackson", "jackson-kotlin"]
