@@ -31,14 +31,14 @@ fun main() {
             }
         )
     }
-    svr.awaitTermination(TERMINATION_PERIOD, TimeUnit.SECONDS)
+    svr.awaitTermination()
 }
 
 class Greeter : GreeterGrpcKt.GreeterCoroutineImplBase() {
     override suspend fun sayHello(request: HelloRequest): HelloReply {
         return helloReply {
-            delay(10000)
-            this.message = "Hello World!!"
+            delay(1000)
+            this.message = "Hello ${request.name}"
         }
     }
 }
