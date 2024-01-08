@@ -12,10 +12,6 @@ dependencies {
     implementation(libs.bundles.logging)
     // coroutines
     implementation(libs.bundles.kotlin.coroutine)
-
-    // retrofit
-    implementation(libs.bundles.retrofit)
-
     // test
     testImplementation(libs.bundles.test)
 }

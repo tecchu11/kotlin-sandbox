@@ -25,9 +25,6 @@ protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin" }
 
 logging-logback = { module = "ch.qos.logback:logback-classic", version = "1.4.14" }
 logging-kotlin = { module = "io.github.microutils:kotlin-logging-jvm", version = "3.0.5" }
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-retrofit-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit" }
-jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version = "2.16.1" }
 
 junit-bom = { module = "org.junit:junit-bom", version = "5.10.1" }
 junit-kotlin = { module = "org.jetbrains.kotlin:kotlin-test-junit5" }
@@ -40,5 +37,4 @@ plugins = ["kotlin-jvm", "detekt", "protobuf-gradle-plugin"]
 grpc-kotlin = ["grpc-kotin-stub", "grpc-netty-shaded", "grpc-protobuf", "grpc-services", "protobuf-kotlin"]
 kotlin-coroutine = ["kotlin-coroutinee-core", "kotlin-coroutine-slf4j"]
 logging = ["logging-logback", "logging-kotlin"]
-retrofit = ["retrofit", "retrofit-jackson", "jackson-kotlin"]
 test = ["junit-kotlin", "junit-jupiter"]
