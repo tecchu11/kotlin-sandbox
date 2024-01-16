@@ -1,5 +1,7 @@
 import com.example.ext.libs
 import com.example.ext.of
+import com.google.protobuf.gradle.id
+import com.google.protobuf.gradle.remove
 
 plugins {
     id("project.kotlin-convention")
@@ -11,20 +13,26 @@ protobuf {
         artifact = libs.of("protobuf-protoc").get().toString()
     }
     plugins {
-        create("grpc") {
+        id("grpc") {
             artifact = libs.of("grpc-proto-gen-java").get().toString()
         }
-        create("grpckt") {
+        id("grpckt") {
             artifact = libs.of("grpc-proto-gen-kotlin").get().toString().plus(":jdk8@jar")
+        }
+        id("doc") {
+            artifact = libs.of("protobuf-doc").get().toString()
         }
     }
     generateProtoTasks.all().forEach {
         it.plugins {
-            create("grpc")
-            create("grpckt")
+            id("grpc")
+            id("grpckt")
+            id("doc") {
+                this.option("markdown,grpc-docs.md")
+            }
         }
         it.builtins {
-            create("kotlin")
+            id("kotlin")
         }
     }
 }

@@ -22,6 +22,10 @@ protobuf-gradle-plugin = { module = "com.google.protobuf:protobuf-gradle-plugin"
 protobuf-bom = { module = "com.google.protobuf:protobuf-bom", version.ref = "protobuf" }
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
 protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin" }
+protobuf-doc = { module = "io.github.pseudomuto:protoc-gen-doc", version = "1.5.1" }
+
+koin-bom = { module = "io.insert-koin:koin-bom", version = "3.5.3" }
+koin-core = { module = "io.insert-koin:koin-core" }
 
 logging-logback = { module = "ch.qos.logback:logback-classic", version = "1.4.14" }
 logging-kotlin = { module = "io.github.microutils:kotlin-logging-jvm", version = "3.0.5" }
@@ -37,4 +41,5 @@ plugins = ["kotlin-jvm", "detekt", "protobuf-gradle-plugin"]
 grpc-kotlin = ["grpc-kotin-stub", "grpc-netty-shaded", "grpc-protobuf", "grpc-services", "protobuf-kotlin"]
 kotlin-coroutine = ["kotlin-coroutinee-core", "kotlin-coroutine-slf4j"]
 logging = ["logging-logback", "logging-kotlin"]
+koin = ["koin-core"]
 test = ["junit-kotlin", "junit-jupiter"]
