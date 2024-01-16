@@ -12,10 +12,12 @@ dependencies {
     implementation(libs.bundles.logging)
     // coroutines
     implementation(libs.bundles.kotlin.coroutine)
+    // koin
+    implementation(libs.bundles.koin)
     // test
     testImplementation(libs.bundles.test)
 }
 
 application {
-    mainClass.set("com.example.AppKt")
+    mainClass.set("com.example.MainKt")
 }

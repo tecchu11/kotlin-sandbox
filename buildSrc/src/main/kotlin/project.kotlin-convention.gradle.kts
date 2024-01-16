@@ -1,7 +1,5 @@
 import com.example.ext.libs
 import com.example.ext.of
-import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompilerOptions
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 import org.jetbrains.kotlin.gradle.dsl.jvm.JvmTargetValidationMode
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
@@ -18,6 +16,7 @@ dependencies {
     implementation(platform(libs.of("kotlin-coroutine-bom")))
     implementation(platform(libs.of("grpc-bom")))
     implementation(platform(libs.of("protobuf-bom")))
+    implementation(platform(libs.of("koin-bom")))
     testImplementation(platform(libs.of("junit-bom")))
 }
 
@@ -26,7 +25,6 @@ kotlin {
     compilerOptions {
         freeCompilerArgs.add("-Xjsr305=strict")
     }
-
 }
 
 tasks.withType<KotlinJvmCompile> {
