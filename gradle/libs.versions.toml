@@ -5,7 +5,7 @@ grpc-kotlin = "1.4.1"
 protobuf = "3.25.1"
 
 [libraries]
-kotlin-jvm = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version = "1.9.22" }
+kotlin-jvm = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version = "1.9.25" }
 kotlin-coroutine-bom = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-bom", version = "1.7.3" }
 kotlin-coroutinee-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core" }
 kotlin-coroutine-slf4j = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-slf4j" }
