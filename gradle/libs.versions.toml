@@ -30,7 +30,7 @@ junit-bom = { module = "org.junit:junit-bom", version = "5.10.1" }
 junit-kotlin = { module = "org.jetbrains.kotlin:kotlin-test-junit5" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-engine" }
 
-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version = "1.23.4" }
+detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version = "1.23.7" }
 
 [bundles]
 plugins = ["kotlin-jvm", "detekt", "protobuf-gradle-plugin"]
