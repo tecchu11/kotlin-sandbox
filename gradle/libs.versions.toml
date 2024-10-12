@@ -23,7 +23,7 @@ protobuf-bom = { module = "com.google.protobuf:protobuf-bom", version.ref = "pro
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
 protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin" }
 
-logging-logback = { module = "ch.qos.logback:logback-classic", version = "1.4.14" }
+logging-logback = { module = "ch.qos.logback:logback-classic", version = "1.5.10" }
 logging-kotlin = { module = "io.github.microutils:kotlin-logging-jvm", version = "3.0.5" }
 
 junit-bom = { module = "org.junit:junit-bom", version = "5.10.1" }
