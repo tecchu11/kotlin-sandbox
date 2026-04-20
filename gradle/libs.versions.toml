@@ -18,7 +18,7 @@ grpc-services = { module = "io.grpc:grpc-services" }
 grpc-testing = { module = "io.grpc:grpc-testing" }
 grpc-kotin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin" }
 grpc-proto-gen-kotlin = { module = "io.grpc:protoc-gen-grpc-kotlin", version.ref = "grpc-kotlin" }
-protobuf-gradle-plugin = { module = "com.google.protobuf:protobuf-gradle-plugin", version = "0.9.4" }
+protobuf-gradle-plugin = { module = "com.google.protobuf:protobuf-gradle-plugin", version = "0.10.0" }
 protobuf-bom = { module = "com.google.protobuf:protobuf-bom", version.ref = "protobuf" }
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
 protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin" }
